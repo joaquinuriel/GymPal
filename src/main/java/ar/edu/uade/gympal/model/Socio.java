@@ -51,6 +51,10 @@ public class Socio {
         return this.rutina != null && this.rutina.esPerfecta(); // Asumiendo que la rutina tiene el método esPerfecta()
     }
 
+    public void añadirTrofeo(Trofeo trofeo) {
+        this.trofeos.add(trofeo);
+    }
+
     // Metodo para contar los pesajes en el último mes
     public int getCantidadPesajesEnUltimoMes() {
         int contadorPesajes = 0;

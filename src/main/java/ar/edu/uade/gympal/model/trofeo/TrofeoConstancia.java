@@ -6,4 +6,9 @@ public class TrofeoConstancia extends Trofeo {
     public boolean verificarCriterio(Socio socio) {
         return socio.haCumplidoRutinaPerfectamente();
     }
+
+    public void entregarTrofeo(Socio socio) {
+        socio.añadirTrofeo(this); // no creo que este bien esto
+        // hacer algo
+    }
 }

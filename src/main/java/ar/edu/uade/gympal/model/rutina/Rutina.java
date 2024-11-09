@@ -3,6 +3,7 @@ package ar.edu.uade.gympal.model.rutina;
 import java.util.Date;
 import java.util.List;
 
+import ar.edu.uade.gympal.model.trofeo.TrofeoConstancia;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +23,7 @@ public class Rutina {
 
     private Date fechaInicio;
 
-    public Rutina() {
-    }
+    private TrofeoConstancia trofeo;
 
     public Rutina(List<Entrenamiento> entrenamientos) {
         this.entrenamientos = entrenamientos;
@@ -35,6 +35,7 @@ public class Rutina {
         for (Entrenamiento entrenamiento : entrenamientos)
             if (!entrenamiento.estaCompleto())
                 return false;
+        // trofeo.entregarTrofeo();
         return true;
     }
 

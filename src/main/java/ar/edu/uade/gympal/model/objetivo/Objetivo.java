@@ -4,6 +4,7 @@ import java.util.Date;
 
 import ar.edu.uade.gympal.model.Socio;
 import ar.edu.uade.gympal.model.rutina.Rutina;
+import ar.edu.uade.gympal.model.trofeo.TrofeoDedicacion;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public abstract class Objetivo {
     private Long id;
     private Date fechaInicio;
     private Rutina rutina;
+    private TrofeoDedicacion trofeo;
 
     @ManyToOne
     @JoinColumn(name = "socio_id")
@@ -38,7 +40,7 @@ public abstract class Objetivo {
     public abstract boolean estaCumplido();
 
     //? Calcular progreso del objetivo o de la rutina ??
-    
+
     // Metodo abstracto para que cada subclase defina cómo calcular el progreso
     public abstract double calcularProgreso();
 

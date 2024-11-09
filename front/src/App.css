@@ -1,0 +1,42 @@
+/* App.css */
+
+body, html, #root, .app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  background-image: url('https://link-al-fondo-de-tu-imagen'); /* Reemplaza esto con tu imagen de fondo de Canva */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: #A1FF0A; /* Verde neón */
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.toggle-switch {
+  margin-top: 20px;
+}
+
+.credit {
+  font-size: 1rem;
+  color: #A1FF0A;
+  position: absolute;
+  bottom: 10px;
+}

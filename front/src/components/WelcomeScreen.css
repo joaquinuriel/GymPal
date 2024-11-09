@@ -1,0 +1,125 @@
+/* WelcomeScreen.css */
+.welcome-screen {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #d1ff00; /* Verde fosforescente */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 1.5s ease;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Estilos para el texto principal */
+.welcome-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.welcome-mode {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #d1ff00;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.welcome-mode .fitness {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Estilo para el interruptor */
+.toggle-switch {
+    margin-top: 20px;
+    position: relative;
+}
+
+#fitness-toggle {
+    display: none;
+}
+
+.fitness-image {
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+
+#fitness-toggle + label {
+    width: 50px;
+    height: 25px;
+    background: #333;
+    display: inline-block;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+#fitness-toggle + label:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: #d1ff00;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 5px;
+    transition: 0.3s;
+}
+
+#fitness-toggle:checked + label:after {
+    left: 25px;
+}
+
+/* Estilos para las cruces en el fondo */
+.pattern-corner {
+    position: absolute;
+    background-image: url('./crosses-pattern.png');
+    background-repeat: repeat;
+    opacity: 0.5;
+}
+
+.pattern-corner.top-left,
+.pattern-corner.top-right,
+.pattern-corner.bottom-left,
+.pattern-corner.bottom-right {
+    width: 100px;
+    height: 100px;
+}
+
+.pattern-corner.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.pattern-corner.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.pattern-corner.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.pattern-corner.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}

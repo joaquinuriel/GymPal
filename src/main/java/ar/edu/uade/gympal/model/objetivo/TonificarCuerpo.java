@@ -1,7 +1,6 @@
 package ar.edu.uade.gympal.model.objetivo;
 
 import ar.edu.uade.gympal.model.Socio;
-import ar.edu.uade.gympal.model.rutina.Rutina;
 import jakarta.persistence.Entity;
 
 @Entity
@@ -10,8 +9,8 @@ public class TonificarCuerpo extends Objetivo {
     private float masaMuscularObjetivo;
     private float porcentajeGrasaObjetivo;
 
-    public TonificarCuerpo(Socio socio, Rutina rutina, float masaMuscularObjetivo, float porcentajeGrasaObjetivo) {
-        super(socio, rutina);
+    public TonificarCuerpo(Socio socio, float masaMuscularObjetivo, float porcentajeGrasaObjetivo) {
+        super(socio);
         this.masaMuscularObjetivo = masaMuscularObjetivo;
         this.porcentajeGrasaObjetivo = porcentajeGrasaObjetivo;
     }

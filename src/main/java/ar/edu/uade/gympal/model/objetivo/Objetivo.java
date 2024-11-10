@@ -40,10 +40,9 @@ public abstract class Objetivo {
     protected Socio socio;
 
     // quien crea el objetivo?
-    public Objetivo(Socio socio, Rutina rutina) {
+    public Objetivo(Socio socio) {
         this.fechaInicio = new Date();
         this.socio = socio;
-        this.rutina = rutina;
     }
 
     public abstract boolean estaCumplido();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import ar.edu.uade.gympal.model.objetivo.Objetivo;
 import ar.edu.uade.gympal.model.rutina.Rutina;
@@ -73,6 +74,18 @@ public class Socio {
 
         return contadorPesajes;
     }
+
+    // Metodo para generar valores ideales
+  public Medicion generarMedicionIdeal() {
+    Random random = new Random();
+    
+    float pesoIdeal = 70 + random.nextFloat() * 10;
+    float masaMuscularIdeal = 30 + random.nextFloat() * 10;
+    float porcentajeGrasaIdeal = 10 + random.nextFloat() * 10;
+    
+    // Retorna una nueva instancia de Medicion con los valores ideales
+    return new Medicion(pesoIdeal, masaMuscularIdeal, porcentajeGrasaIdeal, null); 
+}
 
     // public boolean haCumplidoObjetivo() {
     // if (this.objetivo != null) {

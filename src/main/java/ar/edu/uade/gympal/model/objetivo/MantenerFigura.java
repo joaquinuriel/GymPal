@@ -1,10 +1,7 @@
 package ar.edu.uade.gympal.model.objetivo;
 
-import java.util.Date;
-
 import ar.edu.uade.gympal.model.Medicion;
 import ar.edu.uade.gympal.model.Socio;
-import ar.edu.uade.gympal.model.rutina.Rutina;
 import jakarta.persistence.Entity;
 
 @Entity
@@ -13,8 +10,8 @@ public class MantenerFigura extends Objetivo {
     private float pesoInicial;
     private float margenPeso;
 
-    public MantenerFigura(Socio socio, Rutina rutina, float pesoInicial, float margenPeso) {
-        super(socio, rutina);
+    public MantenerFigura(Socio socio, float pesoInicial, float margenPeso) {
+        super(socio);
         this.pesoInicial = pesoInicial;
         this.margenPeso = margenPeso;
     }

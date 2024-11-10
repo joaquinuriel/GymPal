@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Ejercicio {
@@ -11,13 +12,26 @@ public class Ejercicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private GrupoMuscular grupoMuscular;
     private int series;
     private int repeticiones;
     private int peso;
     private int nivelAerobico;
     private int nivelExigenciaMuscular;
+    private GrupoMuscular grupoMuscular;
     private boolean realizado = false;
+
+    @ManyToOne
+    private Entrenamiento entrenamiento;
+
+    public Ejercicio(EjercicioBase base) {
+        this.peso = base.peso;
+        this.nombre = base.nombre;
+        this.series = base.series;
+        this.repeticiones = base.repeticiones;
+        this.nivelAerobico = base.nivelAerobico;
+        this.nivelExigenciaMuscular = base.nivelExigenciaMuscular;
+        this.grupoMuscular = base.grupoMuscular;
+    }
 
     public void finalizarEjercicio() {
         this.realizado = true;

@@ -8,7 +8,7 @@ import SplashScreen from './components/SplashScreen'; // Asegúrate de importar 
 import WelcomeScreen from './components/WelcomeScreen';
 
 const fetcher = ofetch.create({
-  baseURL: "localhost:8080"
+  baseURL: "http://localhost:8080"
 })
 
 function App() {

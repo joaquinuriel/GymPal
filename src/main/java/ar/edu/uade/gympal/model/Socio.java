@@ -24,6 +24,7 @@ public class Socio {
     private Long id;
 
     private String nombre;
+    private int entrenamientosPorSemana;
     private float peso; // Asegúrate de tener este atributo para verificar el peso
 
     @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL)
@@ -151,5 +152,13 @@ public class Socio {
 
     public void setRutina(Rutina rutina) {
         this.rutina = rutina;
+    }
+
+    public int getEntrenamientosPorSemana() {
+        return entrenamientosPorSemana;
+    }
+
+    public void setEntrenamientosPorSemana(int entrenamientosPorSemana) {
+        this.entrenamientosPorSemana = entrenamientosPorSemana;
     }
 }

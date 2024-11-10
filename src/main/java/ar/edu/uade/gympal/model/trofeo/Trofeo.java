@@ -1,21 +1,17 @@
 package ar.edu.uade.gympal.model.trofeo;
 
 import java.util.Date;
-
 import ar.edu.uade.gympal.model.Socio;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
-public class Trofeo {
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_trofeo", discriminatorType = DiscriminatorType.STRING)
+public abstract class Trofeo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private Date fechaOtorgamiento;
 
@@ -23,6 +19,7 @@ public class Trofeo {
     @JoinColumn(name = "socio_id")
     private Socio socio;
 
+    public Trofeo() {}
 
     public Trofeo(String nombre, Date fechaOtorgamiento, Socio socio) {
         this.nombre = nombre;
@@ -30,12 +27,11 @@ public class Trofeo {
         this.socio = socio;
     }
 
-    public Trofeo() {
+    public abstract boolean verificarCriterio(Socio socio);
 
-    }
+    public abstract void entregarTrofeo(Socio socio);
 
-
-    // Getters y setters
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -67,4 +63,8 @@ public class Trofeo {
     public void setSocio(Socio socio) {
         this.socio = socio;
     }
+
+
 }
+
+

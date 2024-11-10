@@ -18,6 +18,10 @@ public class TonificarCuerpo extends Objetivo {
         this.porcentajeGrasaObjetivo = porcentajeGrasaObjetivo;
     }
 
+    public TonificarCuerpo() {
+
+    }
+
     @Override
     public boolean estaCumplido() {
         return socio.getMasaMuscular() >= masaMuscularObjetivo && socio.getPorcentajeGrasa() <= porcentajeGrasaObjetivo;

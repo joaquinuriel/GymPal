@@ -1,31 +1,23 @@
-import { ofetch } from 'ofetch';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { SWRConfig } from 'swr';
-import './App.css';
-import Home from './components/Home';
-import SociosList from './components/SociosList';
-import SplashScreen from './components/SplashScreen'; // Asegúrate de importar el nuevo SplashScreen
-import WelcomeScreen from './components/WelcomeScreen';
-
-const fetcher = ofetch.create({
-  baseURL: "localhost:8080"
-})
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./components/LoginPage";
+import SelectObjetive from "./components/SelectObjetive"; // Verifica que el nombre coincida con el archivo
+import RoutinePage from "./components/RoutinePage";
 
 function App() {
-  return (
-    <div className="app">
-      <SWRConfig value={{ fetcher }}>
+    return (
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<SplashScreen />} /> {/* Nueva ruta para SplashScreen */}
-            <Route path="/welcome" element={<WelcomeScreen />} /> {/* Ruta opcional para WelcomeScreen */}
-            <Route path="/home" element={<Home />} />
-            <Route path="/socios" element={<SociosList />} />
-          </Routes>
+            <Routes>
+                {/* Página de inicio de sesión */}
+                <Route path="/" element={<LoginPage />} />
+
+                {/* Página para seleccionar objetivo y días */}
+                <Route path="/select-objective" element={<SelectObjetive />} />
+
+                {/* Página para mostrar la rutina generada */}
+                <Route path="/routine" element={<RoutinePage />} />
+            </Routes>
         </BrowserRouter>
-      </SWRConfig>
-    </div>
-  )
+    );
 }
 
-export default App
+export default App;

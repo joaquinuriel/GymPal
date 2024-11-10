@@ -1,118 +1,54 @@
 package ar.edu.uade.gympal.model;
 
+import jakarta.persistence.*;
+import ar.edu.uade.gympal.model.objetivo.Objetivo;
+import ar.edu.uade.gympal.model.rutina.Rutina;
+import ar.edu.uade.gympal.model.trofeo.Trofeo;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import ar.edu.uade.gympal.model.objetivo.Objetivo;
-import ar.edu.uade.gympal.model.rutina.Rutina;
-import ar.edu.uade.gympal.model.trofeo.Trofeo;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import ar.edu.uade.gympal.model.Medicion;
 
 @Entity
 public class Socio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private float masaMuscular; // Masa muscular del socio
+    private float porcentajeGrasa; // Porcentaje de grasa del socio
+
     private String nombre;
-    private float peso; // Asegúrate de tener este atributo para verificar el peso
-
-    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL)
+    private int edad;
+    private float peso;
+    private float altura;
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Medicion> mediciones = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rutina rutina; // Relación con la entidad Rutina
 
-    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Trofeo> trofeos = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "objetivo_id")
     private Objetivo objetivo;
 
-    @OneToOne
-    private Rutina rutina;
+    private int rutinasCompletadas;
+    private int progresoObjetivo;
 
-    private float masaMuscular; // Masa muscular del socio
-    private float porcentajeGrasa; // Porcentaje de grasa del socio
+    public Socio() {}
 
-    public Medicion ultimaMedicion() {
-        return mediciones.get(mediciones.size() - 1);
-    }
-
-    // Metodo para verificar si cumplió la rutina perfectamente
-    public boolean haCumplidoRutinaPerfectamente() {
-        return this.rutina != null && this.rutina.esPerfecta(); // Asumiendo que la rutina tiene el método esPerfecta()
-    }
-
-    public void añadirTrofeo(Trofeo trofeo) {
-        this.trofeos.add(trofeo);
-    }
-
-    // Metodo para contar los pesajes en el último mes
-    public int getCantidadPesajesEnUltimoMes() {
-        int contadorPesajes = 0;
-        Date ahora = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(ahora);
-        calendar.add(Calendar.MONTH, -1); // Fecha de un mes atrás
-        Date haceUnMes = calendar.getTime();
-
-        for (Medicion medicion : this.mediciones) {
-            if (medicion.getFechaMedicion().after(haceUnMes)) {
-                contadorPesajes++;
-            }
-        }
-
-        return contadorPesajes;
-    }
-
-    // public boolean haCumplidoObjetivo() {
-    // if (this.objetivo != null) {
-    // return this.objetivo.verificarCumplimiento();
-    // }
-    // return false;
-    // }
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
+    public Socio(String nombre, int edad, float peso, float altura) {
+        this.nombre = nombre;
+        this.edad = edad;
         this.peso = peso;
+        this.altura = altura;
     }
 
-    public float getMasaMuscular() {
-        return masaMuscular;
-    }
-
-    public void setMasaMuscular(float masaMuscular) {
-        this.masaMuscular = masaMuscular;
-    }
-
-    // Metodo para obtener el porcentaje de grasa del socio
-    public float getPorcentajeGrasa() {
-        return porcentajeGrasa;
-    }
-
-    public void setPorcentajeGrasa(float porcentajeGrasa) {
-        this.porcentajeGrasa = porcentajeGrasa;
-    }
-
-    public Objetivo getObjetivo() {
-        return objetivo;
-    }
-
-    public void setObjetivo(Objetivo objetivo) {
-        this.objetivo = objetivo;
-    }
-
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -129,12 +65,36 @@ public class Socio {
         this.nombre = nombre;
     }
 
-    public List<Medicion> getMediciones() {
-        return mediciones;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setMediciones(List<Medicion> mediciones) {
-        this.mediciones = mediciones;
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
+    }
+
+    public Rutina getRutina() {
+        return rutina;
+    }
+
+    public void setRutina(Rutina rutina) {
+        this.rutina = rutina;
     }
 
     public List<Trofeo> getTrofeos() {
@@ -145,11 +105,93 @@ public class Socio {
         this.trofeos = trofeos;
     }
 
-    public Rutina getRutina() {
-        return rutina;
+    public Objetivo getObjetivo() {
+        return objetivo;
     }
 
-    public void setRutina(Rutina rutina) {
-        this.rutina = rutina;
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public int getRutinasCompletadas() {
+        return rutinasCompletadas;
+    }
+
+    public void setRutinasCompletadas(int rutinasCompletadas) {
+        this.rutinasCompletadas = rutinasCompletadas;
+    }
+
+    public int getProgresoObjetivo() {
+        return progresoObjetivo;
+    }
+
+    public void setProgresoObjetivo(int progresoObjetivo) {
+        this.progresoObjetivo = progresoObjetivo;
+    }
+
+    public List<Medicion> getMediciones() {
+        return mediciones;
+    }
+
+    public void setMediciones(List<Medicion> mediciones) {
+        this.mediciones = mediciones;
+    }
+    public float getMasaMuscular() {
+        return masaMuscular;
+    }
+
+    public void setMasaMuscular(float masaMuscular) {
+        this.masaMuscular = masaMuscular;
+    }
+
+    // Getter y Setter para porcentaje de grasa
+    public float getPorcentajeGrasa() {
+        return porcentajeGrasa;
+    }
+
+    public void setPorcentajeGrasa(float porcentajeGrasa) {
+        this.porcentajeGrasa = porcentajeGrasa;
+    }
+
+    public void añadirTrofeo(Trofeo trofeo) {
+        this.trofeos.add(trofeo);
+        trofeo.setSocio(this);
+    }
+
+    public void removeTrofeo(Trofeo trofeo) {
+        this.trofeos.remove(trofeo);
+        trofeo.setSocio(null);
+    }
+
+    public Medicion ultimaMedicion() {
+        if (mediciones == null || mediciones.isEmpty()) {
+            throw new IllegalStateException("El socio no tiene mediciones registradas");
+        }
+        // Devuelve la última medición de la lista
+        return mediciones.get(mediciones.size() - 1);
+    }
+
+    public int getCantidadPesajesEnUltimoMes() {
+        int contadorPesajes = 0;
+
+        // Obtener la fecha actual
+        Date ahora = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(ahora);
+        calendar.add(Calendar.MONTH, -1); // Restar un mes
+        Date haceUnMes = calendar.getTime();
+
+        // Contar mediciones realizadas en el último mes
+        for (Medicion medicion : mediciones) {
+            if (medicion.getFechaMedicion().after(haceUnMes)) {
+                contadorPesajes++;
+            }
+        }
+
+        return contadorPesajes;
+    }
+
+    public boolean haCumplidoRutinaPerfectamente() {
+        return this.rutina != null && this.rutina.esPerfecta();
     }
 }

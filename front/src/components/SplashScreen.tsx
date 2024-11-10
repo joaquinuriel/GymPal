@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SplashScreen.css';
-import FitnessImage from './ModoFitnessON.png'; // Asegúrate de usar la ruta correcta
+import FitnessImage from './ModoFitnessON.png';
 
 function SplashScreen() {
     const [isActivated, setIsActivated] = useState(false);

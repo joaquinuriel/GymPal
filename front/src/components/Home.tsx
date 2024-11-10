@@ -1,9 +1,11 @@
-// Home.js
-import { useEffect, useState } from 'react';
-import './Home.css';
+import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
     const [fadeIn, setFadeIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -12,12 +14,23 @@ function Home() {
     }, []);
 
     return (
-        <div className={`home-screen ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`home-screen ${fadeIn ? "fade-in" : ""}`}>
             <h1>Bienvenido a GymPal</h1>
             <p>¡Modo fitness activado!</p>
             <div className="home-grid">
-                <div className="home-card">Rutina del Día</div>
-                <div className="home-card">Registro de Progreso</div>
+                <div className="home-card">
+                    Entrenamiento del Día
+                </div>
+                <div className="home-card">
+                    <p>Registro de Progreso</p>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => navigate("/progress")}
+                    >
+                        Ver Progreso
+                    </Button>
+                </div>
                 <div className="home-card">Trofeos</div>
                 <div className="home-card">Mediciones y Objetivos</div>
             </div>

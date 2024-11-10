@@ -31,6 +31,10 @@ public class Medicion {
         this.socio = socio;
     }
 
+    public Medicion() {
+
+    }
+
     public Date getFechaMedicion() {
         return fechaMedicion;
     }

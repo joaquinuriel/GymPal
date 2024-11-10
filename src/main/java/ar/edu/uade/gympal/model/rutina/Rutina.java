@@ -2,14 +2,8 @@ package ar.edu.uade.gympal.model.rutina;
 
 import java.util.Date;
 import java.util.List;
-
 import ar.edu.uade.gympal.model.trofeo.TrofeoConstancia;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Rutina {
@@ -23,14 +17,28 @@ public class Rutina {
 
     private Date fechaInicio;
 
+    @ManyToOne
+    @JoinColumn(name = "trofeo_id")
     private TrofeoConstancia trofeo;
+
+    public TrofeoConstancia getTrofeo() {
+        return trofeo;
+    }
+
+    public void setTrofeo(TrofeoConstancia trofeo) {
+        this.trofeo = trofeo;
+    }
 
     public Rutina(List<Entrenamiento> entrenamientos) {
         this.entrenamientos = entrenamientos;
         this.fechaInicio = new Date();
     }
 
-    // Método para verificar si la rutina se ha cumplido a la perfección
+    public Rutina() {
+
+    }
+
+    // Metodo para verificar si la rutina se ha cumplido a la perfección
     public boolean esPerfecta() {
         for (Entrenamiento entrenamiento : entrenamientos)
             if (!entrenamiento.estaCompleto())

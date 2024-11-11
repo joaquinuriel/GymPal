@@ -1,71 +1,51 @@
-/* SplashScreen.css */
-
 .splash-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 100vw; /* Hace que la pantalla ocupe todo el ancho */
-    background-color: #1a1a1a;
-    color: #d1ff00;
-    font-size: 2.5rem;
-    font-weight: bold;
-    transition: opacity 1.5s ease;
-    overflow: hidden; /* Asegura que no haya desplazamientos */
+    background-color: #000; /* Fondo oscuro */
+    color: #fff;
+    transition: opacity 1.5s ease-in-out;
 }
 
-.fade-out {
+.splash-screen.fade-out {
     opacity: 0;
 }
 
 .fitness-image {
-    width: 200px;
-    margin-top: 20px;
+    width: 200px; /* Ajusta el tamaño según sea necesario */
 }
 
 .toggle-switch {
     margin-top: 20px;
-    position: relative;
-    display: inline-block;
+}
+
+.toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-switch .slider {
     width: 60px;
-    height: 34px;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    height: 30px;
     background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
 }
 
-.slider:before {
-    position: absolute;
+.toggle-switch .slider:before {
     content: "";
-    height: 26px;
+    position: absolute;
     width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
+    height: 26px;
+    background-color: #fff;
     border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
 }
 
-input:checked + .slider {
-    background-color: #00ff00;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
+.toggle-switch input[type="checkbox"]:checked + .slider:before {
+    transform: translateX(30px);
 }

@@ -3,12 +3,9 @@ package ar.edu.uade.gympal.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import ar.edu.uade.gympal.dto.ParametrosRutina;
+import ar.edu.uade.gympal.dto.ParametrosObjetivo;
 import ar.edu.uade.gympal.model.rutina.Ejercicio;
 import ar.edu.uade.gympal.model.rutina.EjercicioBase;
 import ar.edu.uade.gympal.service.EjercicioService;
@@ -25,8 +22,7 @@ public class RutinaController {
     }
 
     @GetMapping("/candidatos")
-    public List<EjercicioBase> obtenerCandidatos(@RequestParam ParametrosRutina parametrosRutina) {
+    public List<EjercicioBase> obtenerCandidatos(@RequestBody ParametrosObjetivo parametrosRutina) {
         return ejercicioService.obtenerCandidatos(parametrosRutina);
     }
-
 }

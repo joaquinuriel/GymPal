@@ -2,8 +2,13 @@ package ar.edu.uade.gympal.model.rutina;
 
 import java.util.Date;
 import java.util.List;
-import ar.edu.uade.gympal.model.trofeo.TrofeoConstancia;
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Rutina {
@@ -12,22 +17,14 @@ public class Rutina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutina")
     private List<Entrenamiento> entrenamientos;
 
     private Date fechaInicio;
 
-    @ManyToOne
-    @JoinColumn(name = "trofeo_id")
-    private TrofeoConstancia trofeo;
-
-    public TrofeoConstancia getTrofeo() {
-        return trofeo;
-    }
-
-    public void setTrofeo(TrofeoConstancia trofeo) {
-        this.trofeo = trofeo;
-    }
+    // @Embedded
+    // private TrofeoConstancia trofeo;
 
     public Rutina(List<Entrenamiento> entrenamientos) {
         this.entrenamientos = entrenamientos;

@@ -1,0 +1,57 @@
+/* Contenedor principal del login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura completa */
+    background-color: #333333; /* Fondo gris oscuro */
+    color: #d1ff00; /* Texto verde fluo */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Caja de login */
+.login-box {
+    background: rgba(51, 51, 51, 0.9); /* Fondo gris oscuro translúcido */
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+    text-align: center;
+}
+
+/* Inputs */
+input {
+    background-color: #555555; /* Gris ligeramente más claro que el fondo */
+    color: #d1ff00; /* Texto verde fluo */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin: 10px 0;
+    outline: none;
+}
+
+/* Botón */
+button {
+    background-color: #d1ff00; /* Verde fluo */
+    color: #000; /* Texto negro */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b3cc00; /* Hover verde más oscuro */
+}
+
+/* Título */
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #d1ff00; /* Texto verde fluo */
+}

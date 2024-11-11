@@ -1,79 +1,109 @@
 import React, { useState } from "react";
-import {
-    Button,
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    InputLabel,
-    MenuItem,
-    Select,
-    Typography,
-    Container,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import "./SelectObjective.css";
 
 const SelectObjective: React.FC = () => {
-    const [objective, setObjective] = useState("");
-    const [selectedDays, setSelectedDays] = useState<string[]>([]);
-    const navigate = useNavigate();
+    const [objective, setObjective] = useState<string>("");
+    const [days, setDays] = useState<string[]>([]);
+    const [weight, setWeight] = useState<string>(""); // Nuevo estado para peso
+    const [height, setHeight] = useState<string>(""); // Nuevo estado para altura
+    const availableDays = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
-    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-
-    const handleToggleDay = (day: string) => {
-        setSelectedDays((prev) =>
+    const toggleDay = (day: string) => {
+        setDays((prev) =>
             prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
         );
     };
 
-    const handleLoadRoutine = () => {
-        // Navegar a la página de rutina con el estado
-        navigate("/routine", { state: { objective, selectedDays } });
+    const handleGenerateRoutine = () => {
+        if (!objective || days.length === 0 || !weight || !height) {
+            alert("Por favor, completa todos los campos antes de generar la rutina.");
+            return;
+        }
+
+        // Simulación de guardar datos en el backend
+        const socioData = {
+            peso: weight,
+            altura: height,
+            objetivo: objective,
+            dias: days,
+        };
+
+        console.log("Datos del socio enviados al backend:", socioData);
+        alert("Rutina generada correctamente.");
     };
 
     return (
-        <Container>
-            <Typography variant="h4" gutterBottom>
-                Selecciona tu Objetivo
-            </Typography>
-            <FormControl fullWidth margin="normal">
-                <InputLabel>Objetivo</InputLabel>
-                <Select
-                    value={objective}
-                    onChange={(e) => setObjective(e.target.value)}
-                >
-                    <MenuItem value="Bajar de peso">Bajar de peso</MenuItem>
-                    <MenuItem value="Tonificar cuerpo">Tonificar cuerpo</MenuItem>
-                    <MenuItem value="Mantener la figura">Mantener la figura</MenuItem>
-                </Select>
-            </FormControl>
-
-            <Typography variant="h6" style={{ marginTop: "16px" }}>
-                Días de Entrenamiento
-            </Typography>
-            {days.map((day) => (
-                <FormControlLabel
-                    key={day}
-                    control={
-                        <Checkbox
-                            checked={selectedDays.includes(day)}
-                            onChange={() => handleToggleDay(day)}
+        <div className="objective-container">
+            {/* Recuadro de peso y altura */}
+            <div className="data-box">
+                <h1>Mi Peso y Altura</h1>
+                <div className="form-group">
+                    <label>
+                        Peso (kg):
+                        <input
+                            type="number"
+                            value={weight}
+                            onChange={(e) => setWeight(e.target.value)}
+                            placeholder="Ej. 70"
                         />
-                    }
-                    label={day}
-                />
-            ))}
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Altura (cm):
+                        <input
+                            type="number"
+                            value={height}
+                            onChange={(e) => setHeight(e.target.value)}
+                            placeholder="Ej. 170"
+                        />
+                    </label>
+                </div>
+            </div>
 
-            <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={handleLoadRoutine}
-                style={{ marginTop: "16px" }}
-                disabled={!objective || selectedDays.length === 0}
-            >
-                Cargar Rutina
-            </Button>
-        </Container>
+            {/* Recuadro de selección de objetivos */}
+            <div className="objective-box">
+                <h1>Seleccionar Objetivo</h1>
+                <div className="form-group">
+                    <label>
+                        Objetivo:
+                        <select
+                            value={objective}
+                            onChange={(e) => setObjective(e.target.value)}
+                        >
+                            <option disabled value="">
+                                Selecciona un objetivo
+                            </option>
+                            <option value="Perder peso">Perder Peso</option>
+                            <option value="Mantener figura">Mantener Figura</option>
+                            <option value="Tonificar cuerpo">Tonificar Cuerpo</option>
+                        </select>
+                    </label>
+                </div>
+                <div className="form-group">
+                    <h3>Días de Entrenamiento:</h3>
+                    <div className="days-buttons">
+                        {availableDays.map((day) => (
+                            <button
+                                key={day}
+                                className={`day-button ${
+                                    days.includes(day) ? "selected" : ""
+                                }`}
+                                onClick={() => toggleDay(day)}
+                            >
+                                {day}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+                <button
+                    className="generate-routine-button"
+                    onClick={handleGenerateRoutine}
+                >
+                    GENERAR RUTINA
+                </button>
+            </div>
+        </div>
     );
 };
 

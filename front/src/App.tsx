@@ -1,17 +1,21 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./components/LoginPage";
-import SelectObjetive from "./components/SelectObjetive"; // Verifica que el nombre coincida con el archivo
-import RoutinePage from "./components/RoutinePage";
+import SplashScreen from "./components/SplashScreen"; // Pantalla inicial
+import LoginPage from "./components/LoginPage"; // Pantalla de inicio de sesión
+import SelectObjective from "./components/SelectObjetive"; // Selección de objetivos
+import RoutinePage from "./components/RoutinePage"; // Rutina generada
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Página de inicio de sesión */}
-                <Route path="/" element={<LoginPage />} />
+                {/* Pantalla inicial con imagen y toggle */}
+                <Route path="/" element={<SplashScreen />} />
+
+                {/* Pantalla de inicio de sesión */}
+                <Route path="/login" element={<LoginPage />} />
 
                 {/* Página para seleccionar objetivo y días */}
-                <Route path="/select-objective" element={<SelectObjetive />} />
+                <Route path="/select-objective" element={<SelectObjective />} />
 
                 {/* Página para mostrar la rutina generada */}
                 <Route path="/routine" element={<RoutinePage />} />

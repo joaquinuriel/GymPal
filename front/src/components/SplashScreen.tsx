@@ -1,29 +1,28 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './SplashScreen.css';
-import FitnessImage from './ModoFitnessON.png';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./SplashScreen.css";
+import ModoFitnessON from "./ModoFitnessON.png";
 
-function SplashScreen() {
-    const [isActivated, setIsActivated] = useState(false);
+const SplashScreen: React.FC = () => {
+    const [fadeOut, setFadeOut] = useState(false);
     const navigate = useNavigate();
 
     const handleToggle = () => {
-        setIsActivated(true);
+        setFadeOut(true);
         setTimeout(() => {
-            navigate('/home');
-        }, 1500);
+            navigate("/login"); // Navega a la pantalla de inicio de sesión
+        }, 1500); // Tiempo de animación antes de redirigir
     };
 
     return (
-        <div className={`splash-screen ${isActivated ? 'fade-out' : ''}`}>
-            <h1>GYMPAL</h1>
-            <img src={FitnessImage} alt="Modo Fitness On" className="fitness-image" />
+        <div className={`splash-screen ${fadeOut ? "fade-out" : ""}`}>
+            <img src={ModoFitnessON} alt="Modo Fitness ON" className="fitness-image" />
             <label className="toggle-switch">
-                <input type="checkbox" onChange={handleToggle} />
+                <input type="checkbox" onClick={handleToggle} />
                 <span className="slider"></span>
             </label>
         </div>
     );
-}
+};
 
 export default SplashScreen;

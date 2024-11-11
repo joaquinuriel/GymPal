@@ -1,0 +1,63 @@
+/* Colores globales */
+:root {
+    --bg-color: #333333; /* Fondo gris oscuro */
+    --text-color: #d1ff00; /* Texto verde fluo */
+    --input-bg: #555555; /* Fondo de inputs */
+    --button-bg: #d1ff00; /* Fondo de botones */
+    --button-hover-bg: #b3cc00; /* Hover de botones */
+    --card-bg: rgba(51, 51, 51, 0.9); /* Fondo de tarjetas */
+    --border-radius: 8px; /* Esquinas redondeadas */
+}
+
+/* Fondo y texto global */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Inputs */
+input, select {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+/* Botones */
+button {
+    background-color: var(--button-bg);
+    color: #000; /* Texto negro para contraste */
+    border: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Tarjetas (como en Home) */
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+}

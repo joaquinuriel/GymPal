@@ -1,9 +1,6 @@
 package ar.edu.uade.gympal.model.objetivo;
 
-import java.util.Date;
-
 import ar.edu.uade.gympal.model.Socio;
-import ar.edu.uade.gympal.model.rutina.Rutina;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
@@ -14,15 +11,19 @@ public class BajarDePeso extends Objetivo {
     private double pesoInicial;
     private double pesoObjetivo;
 
-    public BajarDePeso(Date fechaInicio, Socio socio, Rutina rutina, double pesoInicial, double pesoObjetivo) {
-        super(fechaInicio, socio, rutina);
+    public BajarDePeso(Socio socio, double pesoInicial, double pesoObjetivo) {
+        super(socio);
         this.pesoInicial = pesoInicial;
         this.pesoObjetivo = pesoObjetivo;
     }
 
+    public BajarDePeso() {
+
+    }
+
     @Override
     public boolean estaCumplido() {
-        return pesoObjetivo <= pesoInicial;
+        return pesoInicial <= pesoObjetivo;
     }
 
     @Override

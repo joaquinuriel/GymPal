@@ -17,7 +17,6 @@ public class Rutina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutina")
     private List<Entrenamiento> entrenamientos;
 
@@ -31,17 +30,23 @@ public class Rutina {
         this.fechaInicio = new Date();
     }
 
-    public Rutina() {
-
-    }
-
-    // Metodo para verificar si la rutina se ha cumplido a la perfección
+    // Método para verificar si la rutina se ha cumplido a la perfección
     public boolean esPerfecta() {
         for (Entrenamiento entrenamiento : entrenamientos)
             if (!entrenamiento.estaCompleto())
                 return false;
         // trofeo.entregarTrofeo();
         return true;
+    }
+
+    public void reforzarRutina() {
+        for (Entrenamiento entrenamiento : entrenamientos) {
+            for (Ejercicio ejercicio : entrenamiento.getEjercicios()) {
+                ejercicio.setRepeticiones(ejercicio.getRepeticiones() + 1);
+                ejercicio.setSeries(ejercicio.getSeries() + 1);
+                ejercicio.setPeso(ejercicio.getPeso() + 5);
+            }
+        }
     }
 
     public float getProgreso() {

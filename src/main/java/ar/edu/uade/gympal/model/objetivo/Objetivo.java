@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -35,7 +34,7 @@ public abstract class Objetivo {
 
     // private TrofeoDedicacion trofeo;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "socio_id")
     protected Socio socio;
 

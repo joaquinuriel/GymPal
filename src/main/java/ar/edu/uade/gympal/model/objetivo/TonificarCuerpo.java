@@ -9,14 +9,16 @@ public class TonificarCuerpo extends Objetivo {
     private float masaMuscularObjetivo;
     private float porcentajeGrasaObjetivo;
 
+    // Constructor vacío 
+    public TonificarCuerpo() {
+        super(); // Llama al constructor de la clase padre
+    }
+
+    // Constructor con parámetros
     public TonificarCuerpo(Socio socio, float masaMuscularObjetivo, float porcentajeGrasaObjetivo) {
         super(socio);
         this.masaMuscularObjetivo = masaMuscularObjetivo;
         this.porcentajeGrasaObjetivo = porcentajeGrasaObjetivo;
-    }
-
-    public TonificarCuerpo() {
-
     }
 
     @Override
@@ -24,17 +26,13 @@ public class TonificarCuerpo extends Objetivo {
         return socio.getMasaMuscular() >= masaMuscularObjetivo && socio.getPorcentajeGrasa() <= porcentajeGrasaObjetivo;
     }
 
-    // Metodo para calcular el progreso en función de masa muscular y porcentaje de
-    // grasa
     @Override
     public double calcularProgreso() {
-        float progresoMasaMuscular = Math.min(100, (socio.getMasaMuscular() / masaMuscularObjetivo) * 100); // Calcula
+        float progresoMasaMuscular = Math.min(100, (socio.getMasaMuscular() / masaMuscularObjetivo) * 100);
 
         float progresoPorcentajeGrasa = Math.min(100,
-                ((porcentajeGrasaObjetivo - socio.getPorcentajeGrasa()) / porcentajeGrasaObjetivo) * 100); //// Calcula
+                ((porcentajeGrasaObjetivo - socio.getPorcentajeGrasa()) / porcentajeGrasaObjetivo) * 100);
 
-
-        // Promedio de ambos factores para determinar el progreso total
         return (progresoMasaMuscular + progresoPorcentajeGrasa) / 2;
     }
 

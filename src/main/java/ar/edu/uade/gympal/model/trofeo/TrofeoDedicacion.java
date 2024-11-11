@@ -1,11 +1,18 @@
 package ar.edu.uade.gympal.model.trofeo;
 
+import ar.edu.uade.gympal.model.Socio;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.DiscriminatorValue;
+public class TrofeoDedicacion extends Trofeo {
+    public TrofeoDedicacion() {
+        super();
+    }
 
-@Entity
-@DiscriminatorValue("DEDICACION")
-public abstract class TrofeoDedicacion extends Trofeo {
-
+    @Override
+    public boolean verificarCriterio(Socio socio) {
+        if (!socio.getObjetivo().estaCumplido())
+            return false;
+        TrofeoDedicacion trofeo = new TrofeoDedicacion();
+        socio.añadirTrofeo(trofeo);
+        return true;
+    }
 }

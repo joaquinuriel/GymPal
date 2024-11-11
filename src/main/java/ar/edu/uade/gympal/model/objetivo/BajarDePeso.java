@@ -1,6 +1,7 @@
 package ar.edu.uade.gympal.model.objetivo;
 
 import ar.edu.uade.gympal.model.Socio;
+import ar.edu.uade.gympal.model.trofeo.TrofeoDedicacion;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
@@ -8,36 +9,28 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("BAJAR_PESO")
 public class BajarDePeso extends Objetivo {
 
-    private double pesoInicial;
     private double pesoObjetivo;
+    private TrofeoDedicacion trofeoDedicacion;
 
-    public BajarDePeso(Socio socio, double pesoInicial, double pesoObjetivo) {
-        super(socio);
-        this.pesoInicial = pesoInicial;
-        this.pesoObjetivo = pesoObjetivo;
+    private float pesoActual() {
+        return socio.ultimaMedicion().getPeso();
     }
 
-    public BajarDePeso() {
-
+    public BajarDePeso(Socio socio, double pesoObjetivo) {
+        super(socio);
+        this.pesoObjetivo = pesoObjetivo;
     }
 
     @Override
     public boolean estaCumplido() {
-        return pesoInicial <= pesoObjetivo;
+        boolean cumplido = pesoActual() <= pesoObjetivo;
+        trofeoDedicacion.verificarCriterio(socio);
+        return pesoActual() <= pesoObjetivo;
     }
 
     @Override
     public double calcularProgreso() {
-        return pesoInicial / pesoObjetivo;
-    }
-
-    // Getters y Setters
-    public double getPesoInicial() {
-        return pesoInicial;
-    }
-
-    public void setPesoInicial(double pesoInicial) {
-        this.pesoInicial = pesoInicial;
+        return pesoActual() / pesoObjetivo;
     }
 
     public double getPesoObjetivo() {

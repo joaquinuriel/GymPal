@@ -4,8 +4,9 @@ import "./SelectObjective.css";
 const SelectObjective: React.FC = () => {
     const [objective, setObjective] = useState<string>("");
     const [days, setDays] = useState<string[]>([]);
-    const [weight, setWeight] = useState<string>(""); // Nuevo estado para peso
-    const [height, setHeight] = useState<string>(""); // Nuevo estado para altura
+    const [weight, setWeight] = useState<string>(""); // Estado para peso
+    const [height, setHeight] = useState<string>(""); // Estado para altura
+    const [gender, setGender] = useState<string>(""); // Estado para género
     const availableDays = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
     const toggleDay = (day: string) => {
@@ -15,7 +16,7 @@ const SelectObjective: React.FC = () => {
     };
 
     const handleGenerateRoutine = () => {
-        if (!objective || days.length === 0 || !weight || !height) {
+        if (!objective || days.length === 0 || !weight || !height || !gender) {
             alert("Por favor, completa todos los campos antes de generar la rutina.");
             return;
         }
@@ -24,6 +25,7 @@ const SelectObjective: React.FC = () => {
         const socioData = {
             peso: weight,
             altura: height,
+            sexo: gender,
             objetivo: objective,
             dias: days,
         };
@@ -34,9 +36,24 @@ const SelectObjective: React.FC = () => {
 
     return (
         <div className="objective-container">
-            {/* Recuadro de peso y altura */}
+            {/* Recuadro de datos personales */}
             <div className="data-box">
-                <h1>Mi Peso y Altura</h1>
+                <h1>Mis Datos</h1>
+                <div className="form-group">
+                    <label>
+                        Sexo:
+                        <select
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                        >
+                            <option disabled value="">
+                                Selecciona tu sexo
+                            </option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                    </label>
+                </div>
                 <div className="form-group">
                     <label>
                         Peso (kg):

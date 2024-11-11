@@ -33,4 +33,14 @@ public class SocioController {
     public Socio createSocio(@RequestBody Socio socio) {
         return socioService.saveSocio(socio);
     }
+
+    @GetMapping("/{id}/medicion")
+    public String añadirMedicion(@PathVariable Long id) {
+        Socio socio = socioService.getSocioById(id);
+        String nombreTrofeo = socio.añadirMedicion();
+        if (!nombreTrofeo.isEmpty())
+            return "Ganaste un trofeo " + nombreTrofeo;
+        else
+            return "";
+    }
 }

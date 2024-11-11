@@ -2,8 +2,15 @@ package ar.edu.uade.gympal.model.trofeo;
 
 import ar.edu.uade.gympal.model.Socio;
 
-public abstract class TrofeoCreido extends Trofeo {
+public class TrofeoCreido extends Trofeo {
+    public TrofeoCreido() {
+        super();
+    }
+
     public boolean verificarCriterio(Socio socio) {
-        return socio.getCantidadPesajesEnUltimoMes() > 3;
+        boolean cumplido = socio.getCantidadPesajesEnUltimoMes() > 3;
+        if (cumplido)
+            socio.añadirTrofeo(new TrofeoCreido());
+        return cumplido;
     }
 }

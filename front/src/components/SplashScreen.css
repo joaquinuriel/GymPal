@@ -1,51 +1,69 @@
+/* Contenedor principal */
 .splash-screen {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    background-color: #000; /* Fondo oscuro */
-    color: #fff;
-    transition: opacity 1.5s ease-in-out;
+    background-color: #333333; /* Fondo gris oscuro */
+    overflow: hidden;
+    transition: opacity 1.5s ease, background-color 1.5s ease; /* Desvanecimiento */
 }
 
 .splash-screen.fade-out {
-    opacity: 0;
+    opacity: 0; /* Efecto de desvanecimiento */
 }
 
+/* Imagen */
 .fitness-image {
-    width: 200px; /* Ajusta el tamaño según sea necesario */
+    width: 50%;
+    max-width: 600px;
+    height: auto;
 }
 
+/* Toggle Switch */
 .toggle-switch {
-    margin-top: 20px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 54px;
 }
 
-.toggle-switch input[type="checkbox"] {
-    display: none;
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .toggle-switch .slider {
-    width: 60px;
-    height: 30px;
-    background-color: #ccc;
-    border-radius: 15px;
-    position: relative;
+    position: absolute;
     cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 54px;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: #d1ff00;
 }
 
 .toggle-switch .slider:before {
-    content: "";
     position: absolute;
-    width: 26px;
-    height: 26px;
-    background-color: #fff;
+    content: "";
+    height: 46px;
+    width: 46px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
     border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: all 0.3s ease;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .slider:before {
-    transform: translateX(30px);
+.toggle-switch input:checked + .slider:before {
+    transform: translateX(46px);
 }

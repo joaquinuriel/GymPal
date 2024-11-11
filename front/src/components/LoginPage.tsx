@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Para la redirección
-import "./LoginPage.css"; // Importa el CSS ajustado
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 const LoginPage: React.FC = () => {
     const [username, setUsername] = useState("");
@@ -9,7 +9,6 @@ const LoginPage: React.FC = () => {
 
     const handleLogin = (event: React.FormEvent) => {
         event.preventDefault();
-        // Redirigir a la página de selección de objetivos
         navigate("/select-objective");
     };
 

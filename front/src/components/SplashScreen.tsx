@@ -8,10 +8,10 @@ const SplashScreen: React.FC = () => {
     const navigate = useNavigate();
 
     const handleToggle = () => {
-        setFadeOut(true);
+        setFadeOut(true); // Inicia el desvanecimiento
         setTimeout(() => {
-            navigate("/login"); // Navega a la pantalla de inicio de sesión
-        }, 1500); // Tiempo de animación antes de redirigir
+            navigate("/login"); // Navega después del desvanecimiento
+        }, 1500); // Duración del desvanecimiento
     };
 
     return (

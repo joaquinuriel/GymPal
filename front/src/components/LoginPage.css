@@ -16,7 +16,7 @@
     border-radius: 10px;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -53,5 +53,5 @@ button:hover {
 h1 {
     margin-bottom: 20px;
     font-size: 1.8rem;
-    color: #d1ff00; /* Texto verde fluo */
+    color: #d1ff00;
 }

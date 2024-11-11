@@ -30,8 +30,6 @@ public class Entrenamiento {
         this.fecha = new Date();
     }
 
-
-
     public boolean estaCompleto() {
         for (Ejercicio ejercicio : ejercicios)
             if (!ejercicio.isRealizado())
@@ -46,5 +44,9 @@ public class Entrenamiento {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public List<Ejercicio> getEjercicios() {
+        return ejercicios;
     }
 }

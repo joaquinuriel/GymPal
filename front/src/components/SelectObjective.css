@@ -114,4 +114,27 @@ h1 {
 h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+
+}
+/* Inputs */
+input, select {
+    background-color: #555555; /* Fondo gris claro */
+    color: #d1ff00; /* Texto verde fluo */
+    border: none;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+/* Select para sexo */
+select {
+    margin-top: 1rem;
 }

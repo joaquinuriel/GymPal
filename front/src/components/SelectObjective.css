@@ -13,20 +13,40 @@
 }
 
 /* Caja principal */
-.objective-box,
-.data-box {
-    background: rgba(51, 51, 51, 0.9);
-    padding: 3rem;
-    border-radius: 1.5rem;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+.objective-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    background-color: #333333;
+    color: #d1ff00;
+    font-family: 'Arial', sans-serif;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+
+/* Etiqueta de "Objetivo" */
+.form-group label {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
-/* Formulario */
-.form-group {
-    margin-bottom: 2rem;
+.objective-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    background-color: #333333;
+    color: #d1ff00;
+    font-family: 'Arial', sans-serif;
+    padding: 2rem;
+    overflow: hidden;
 }
 
 /* Inputs */
@@ -107,7 +127,7 @@ select {
 
 /* Títulos */
 h1 {
-    font-size: 2.5rem;
+    font-size: 5.5rem;
     margin-bottom: 2rem;
 }
 
@@ -129,12 +149,4 @@ input, select {
     text-align: center;
 }
 
-/* Formulario */
-.form-group {
-    margin-bottom: 2rem;
-}
 
-/* Select para sexo */
-select {
-    margin-top: 1rem;
-}

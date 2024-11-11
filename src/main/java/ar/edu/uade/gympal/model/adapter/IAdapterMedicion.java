@@ -3,11 +3,11 @@ package ar.edu.uade.gympal.model.adapter;
 import ar.edu.uade.gympal.model.Socio;
 
 public interface IAdapterMedicion {
-    public float getPorcentajeGrasa(Socio socio);
+    float getPorcentajeGrasa(Socio socio);
 
-    public float getMasaMuscular(Socio socio);
+    float getMasaMuscular(Socio socio);
 
-    public float getPorcentajeGrasaObjetivo(Socio socio);
+    float getPorcentajeGrasaObjetivo(Socio socio);
 
-    public float getMasaMuscularObjetivo(Socio socio);
+    float getMasaMuscularObjetivo(Socio socio);
 }

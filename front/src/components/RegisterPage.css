@@ -1,0 +1,60 @@
+/* Contenedor principal */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+    background-color: #333333;
+    color: #d1ff00;
+    font-family: 'Arial', sans-serif;
+    padding: 2rem;
+}
+
+/* Formulario */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 2rem; /* Espaciado entre columnas y filas */
+    justify-content: center; /* Centra todo horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;
+    max-width: 800px; /* Ancho máximo del formulario */
+}
+
+/* Inputs y selects */
+input, select {
+    background-color: #555555;
+    color: #d1ff00;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    width: 100%; /* Ocupa el ancho de la celda */
+    font-size: 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 350px; /* Limita el ancho */
+}
+
+/* Botón de registro */
+.register-button {
+    grid-column: span 2; /* Ocupa ambas columnas */
+    background-color: #91e200;
+    color: #000;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.8rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 350px;
+}
+
+.register-button:hover {
+    background-color: #78b000;
+    transform: scale(1.05);
+}
+

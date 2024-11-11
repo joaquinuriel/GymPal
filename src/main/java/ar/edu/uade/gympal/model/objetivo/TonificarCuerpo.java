@@ -9,7 +9,7 @@ public class TonificarCuerpo extends Objetivo {
     private float masaMuscularObjetivo;
     private float porcentajeGrasaObjetivo;
 
-    // Constructor vacío 
+    // Constructor vacío
     public TonificarCuerpo() {
         super(); // Llama al constructor de la clase padre
     }
@@ -28,9 +28,9 @@ public class TonificarCuerpo extends Objetivo {
 
     @Override
     public double calcularProgreso() {
-        float progresoMasaMuscular = Math.min(100, (socio.getMasaMuscular() / masaMuscularObjetivo) * 100);
+        float progresoMasaMuscular = (float) Math.min(100, (socio.getMasaMuscular() / masaMuscularObjetivo) * 100);
 
-        float progresoPorcentajeGrasa = Math.min(100,
+        float progresoPorcentajeGrasa = (float) Math.min(100,
                 ((porcentajeGrasaObjetivo - socio.getPorcentajeGrasa()) / porcentajeGrasaObjetivo) * 100);
 
         return (progresoMasaMuscular + progresoPorcentajeGrasa) / 2;

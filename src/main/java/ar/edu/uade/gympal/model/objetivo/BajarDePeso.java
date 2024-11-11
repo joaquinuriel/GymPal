@@ -4,13 +4,25 @@ import ar.edu.uade.gympal.model.Socio;
 import ar.edu.uade.gympal.model.trofeo.TrofeoDedicacion;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @DiscriminatorValue("BAJAR_PESO")
 public class BajarDePeso extends Objetivo {
 
     private double pesoObjetivo;
+    @ManyToOne
+    @JoinColumn(name = "trofeo_dedicacion_id")
     private TrofeoDedicacion trofeoDedicacion;
+
+    public TrofeoDedicacion getTrofeoDedicacion() {
+        return trofeoDedicacion;
+    }
+
+    public void setTrofeoDedicacion(TrofeoDedicacion trofeoDedicacion) {
+        this.trofeoDedicacion = trofeoDedicacion;
+    }
 
     private float pesoActual() {
         return socio.ultimaMedicion().getPeso();

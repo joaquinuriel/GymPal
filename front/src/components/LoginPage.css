@@ -1,57 +1,98 @@
-/* Contenedor principal del login */
+/* Contenedor principal */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Altura completa */
-    background-color: #333333; /* Fondo gris oscuro */
-    color: #d1ff00; /* Texto verde fluo */
+    height: 100vh;
+    background-color: #333333;
     font-family: 'Arial', sans-serif;
 }
 
-/* Caja de login */
+/* Caja de inicio de sesión */
 .login-box {
-    background: rgba(51, 51, 51, 0.9); /* Fondo gris oscuro translúcido */
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(51, 51, 51, 0.9);
+    border-radius: 1.5rem;
+    padding: 6rem; /* Mucho más espacio interno */
+    width: 800px; /* Ancho considerablemente mayor */
+    height: auto; /* Altura automática para ajustar contenidos */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8); /* Sombra más grande */
+    text-align: center;
+}
+
+
+/* Título */
+h2 {
+    color: #d1ff00;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
     text-align: center;
 }
 
 /* Inputs */
 input {
-    background-color: #555555; /* Gris ligeramente más claro que el fondo */
-    color: #d1ff00; /* Texto verde fluo */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
     width: 100%;
-    margin: 10px 0;
-    outline: none;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-/* Botón */
-button {
-    background-color: #d1ff00; /* Verde fluo */
-    color: #000; /* Texto negro */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+/* Botón de inicio de sesión */
+.login-button {
+    width: 100%;
+    max-width: 300px; /* Ancho máximo */
+    padding: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    color: #000;
+    background-color: #91e200;
+    border: none;
+    border-radius: 1rem;
     cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin: 0 auto; /* Centra horizontalmente */
 }
 
-button:hover {
-    background-color: #b3cc00; /* Hover verde más oscuro */
+/* Botón de registro */
+.register-link {
+    display: block;
+    width: 100%; /* Igual ancho al resto */
+    max-width: 300px; /* Ancho máximo */
+    margin: 1rem auto; /* Centrado horizontal y margen superior */
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    background-color: #91e200;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Título */
-h1 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+.login-button:hover {
+    background-color: #78b000;
+    transform: scale(1.05);
+}
+
+/* Texto debajo del botón */
+.login-footer {
+    margin-top: 1rem;
     color: #d1ff00;
+    font-size: 1.5rem;
+}
+
+
+.register-link:hover {
+    background-color: #78b000;
+    transform: scale(1.05);
 }

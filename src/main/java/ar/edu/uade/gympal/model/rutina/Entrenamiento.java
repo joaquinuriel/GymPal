@@ -45,4 +45,8 @@ public class Entrenamiento {
     public Date getFecha() {
         return fecha;
     }
+
+    public List<Ejercicio> getEjercicios() {
+        return ejercicios;
+    }
 }

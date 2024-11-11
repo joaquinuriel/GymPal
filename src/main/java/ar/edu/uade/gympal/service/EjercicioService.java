@@ -1,7 +1,6 @@
 package ar.edu.uade.gympal.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +19,8 @@ public class EjercicioService {
     @Autowired
     private EjercicioBaseRepository baseRepository;
 
-    public Optional<Ejercicio> obtenerPorId(Long id) {
-        return ejercicioRepository.findById(id);
+    public Ejercicio obtenerPorId(Long id) {
+        return ejercicioRepository.findById(id).get();
     }
 
     public List<EjercicioBase> obtenerCandidatos(ParametrosObjetivo params) {

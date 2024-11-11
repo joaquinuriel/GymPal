@@ -23,12 +23,11 @@ public class Medicion {
     @JoinColumn(name = "socio_id")
     private Socio socio;
 
-    public Medicion(float peso, float masaMuscular, float porcentajeGrasa, Socio socio) {
+    public Medicion(float peso, float masaMuscular, float porcentajeGrasa) {
         this.peso = peso;
         this.masaMuscular = masaMuscular;
         this.porcentajeGrasa = porcentajeGrasa;
         this.fechaMedicion = new Date();
-        this.socio = socio;
     }
 
     public Date getFechaMedicion() {

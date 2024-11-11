@@ -1,7 +1,6 @@
 package ar.edu.uade.gympal.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,18 +29,26 @@ public class RutinaController {
         return ejercicioService.obtenerTodos();
     }
 
-    @GetMapping("/rutina/{id}")
+    @GetMapping("/{id}")
     public Rutina obtenerRutina(@PathVariable Long id) {
         return rutinaService.ObtenerRutina(id);
     }
 
+    @PostMapping("/{id}/reforzar")
+    public void reforzarRutina(@PathVariable Long id) {
+        Rutina rutina = rutinaService.ObtenerRutina(id);
+        rutina.reforzarRutina();
+    }
+
+    @GetMapping("/ejercicio/{id}")
+    public Ejercicio obtenerDetalleEjercicio(@PathVariable Long id) {
+        return ejercicioService.obtenerPorId(id);
+    }
+
     @PostMapping("/finalizar/ejercicio/{id}")
     public void finalizarEjercicio(@PathVariable Long id) {
-        Optional<Ejercicio> opcional = ejercicioService.obtenerPorId(id);
-        if (opcional.isPresent()) {
-            Ejercicio ejercicio = opcional.get();
-            ejercicio.finalizarEjercicio();
-        }
+        Ejercicio ejercicio = ejercicioService.obtenerPorId(id);
+        ejercicio.finalizarEjercicio();
     }
 
 }

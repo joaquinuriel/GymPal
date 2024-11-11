@@ -11,29 +11,22 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Trofeo {
+public abstract class Trofeo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
     private Date fechaOtorgamiento;
 
     @ManyToOne
     @JoinColumn(name = "socio_id")
     private Socio socio;
 
-
-    public Trofeo(String nombre, Date fechaOtorgamiento, Socio socio) {
-        this.nombre = nombre;
-        this.fechaOtorgamiento = fechaOtorgamiento;
-        this.socio = socio;
-    }
-
     public Trofeo() {
-
+        this.fechaOtorgamiento = new Date();
     }
 
+    public abstract boolean verificarCriterio(Socio socio);
 
     // Getters y setters
     public Long getId() {
@@ -42,14 +35,6 @@ public class Trofeo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public Date getFechaOtorgamiento() {

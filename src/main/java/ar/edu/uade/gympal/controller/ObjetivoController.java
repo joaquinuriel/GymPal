@@ -38,7 +38,7 @@ public class ObjetivoController {
         Objetivo objetivo;
 
         switch (tipoObjetivo) {
-            case "BajarDePeso" -> objetivo = new BajarDePeso(socio, inicial.getPeso(), ideal.getPeso());
+            case "BajarDePeso" -> objetivo = new BajarDePeso(socio, ideal.getPeso());
             case "MantenerFigura" -> objetivo = new MantenerFigura(socio, inicial.getPeso(), margenPeso);
             case "TonificarCuerpo" ->
                 objetivo = new TonificarCuerpo(socio,
@@ -60,7 +60,6 @@ public class ObjetivoController {
                         socio.getEntrenamientosPorSemana()));
 
         objetivo.setRutina(rutina);
-
         socio.setObjetivo(objetivo);
     }
 

@@ -33,8 +33,11 @@ public class Ejercicio {
         this.grupoMuscular = base.grupoMuscular;
     }
 
+    // Recibir Ejercicio Base como param
     public void finalizarEjercicio() {
         this.realizado = true;
+        // asignar atributos del base al ejercicio para dejarlo como registrado
+        // guardar ejercicio en base de datos (en el service)
     }
 
     public Long getId() {

@@ -40,4 +40,13 @@ public class RutinaService {
 
         return new Rutina(entrenamientos);
     }
+
+    public void guardarRutina(Rutina rutina) {
+        for (Entrenamiento entrenamiento : rutina.getEntrenamientos()) {
+            for (Ejercicio ejercicio : entrenamiento.getEjercicios())
+                ejercicioService.guardarEjercicio(ejercicio);
+            entrenamientoService.guardarEntrenamiento(entrenamiento);
+        }
+        rutinaRepository.save(rutina);
+    }
 }

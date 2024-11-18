@@ -3,13 +3,18 @@ package ar.edu.uade.gympal.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.uade.gympal.model.rutina.Ejercicio;
 import ar.edu.uade.gympal.model.rutina.Entrenamiento;
+import ar.edu.uade.gympal.repository.EntrenamientoRepository;
 
 @Service
 public class EntrenamientoService {
+    @Autowired
+    private EntrenamientoRepository entrenamientoRepository;
+
     public List<Entrenamiento> agruparEjercicios(List<Ejercicio> ejercicios, int entrenamientosPorSemana) {
         List<Entrenamiento> entrenamientos = new ArrayList<>();
         List<List<Ejercicio>> ejerciciosPorEntrenamiento = new ArrayList<>();
@@ -28,5 +33,9 @@ public class EntrenamientoService {
         }
 
         return entrenamientos;
+    }
+
+    public void guardarEntrenamiento(Entrenamiento entrenamiento) {
+        entrenamientoRepository.save(entrenamiento);
     }
 }

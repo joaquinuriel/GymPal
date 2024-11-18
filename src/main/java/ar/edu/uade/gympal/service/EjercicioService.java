@@ -42,4 +42,8 @@ public class EjercicioService {
     public List<Ejercicio> obtenerTodos() {
         return ejercicioRepository.findAll();
     }
+
+    public void guardarEjercicio(Ejercicio ejercicio) {
+        ejercicioRepository.save(ejercicio);
+    }
 }
